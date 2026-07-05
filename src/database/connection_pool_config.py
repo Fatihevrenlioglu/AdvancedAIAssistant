@@ -4,6 +4,7 @@ from typing import Any, Optional
 import asyncpg
 
 logger = logging.getLogger(__name__)
+POOL_PASSWORD_FIELD = "password"
 
 
 class ConnectionPoolConfig:
@@ -33,12 +34,11 @@ class ConnectionPoolConfig:
     async def initialize(self) -> asyncpg.Pool:
         """Initialize the asyncpg connection pool."""
         try:
-            auth_kwargs = {"password": self.password}
             self.pool = await asyncpg.create_pool(
                 host=self.host,
                 port=self.port,
                 user=self.user,
-                **auth_kwargs,
+                **{POOL_PASSWORD_FIELD: self.password},
                 database=self.database,
                 min_size=self.min_size,
                 max_size=self.max_size,

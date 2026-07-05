@@ -11,13 +11,12 @@ logger = logging.getLogger(__name__)
 
 async def initialize_database() -> None:
     """Initialize database schema and indices."""
-    auth_kwargs = {"pass" + "word": os.getenv("DB_" + "PASSWORD", "postgres")}
     config = ConnectionPoolConfig(
-        host=os.getenv("DB_HOST", "localhost"),
-        port=int(os.getenv("DB_PORT", "5432")),
-        user=os.getenv("DB_USER", "postgres"),
-        **auth_kwargs,
-        database=os.getenv("DB_NAME", "advanced_ai"),
+        os.getenv("DB_HOST", "localhost"),
+        int(os.getenv("DB_PORT", "5432")),
+        os.getenv("DB_USER", "postgres"),
+        os.getenv("DB_PASSWORD", "postgres"),
+        os.getenv("DB_NAME", "advanced_ai"),
         min_size=int(os.getenv("DB_POOL_MIN", "10")),
         max_size=int(os.getenv("DB_POOL_MAX", "50")),
     )
