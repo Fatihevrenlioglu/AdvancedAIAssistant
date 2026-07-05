@@ -7,6 +7,7 @@ services:
     env_file: .env   # HATA 6 FIX: load variables from .env so they are always set
     environment:
       POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     ports:
       - "${DB_PORT:-5432}:5432"

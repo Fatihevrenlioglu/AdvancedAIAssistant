@@ -42,7 +42,10 @@ class IndexingStrategy:
         results: Dict[str, bool] = {}
         for table, index_list in self.INDICES.items():
             for sql in index_list:
-                key = sql.split("idx_")[1].split(" ")[0] if "idx_" in sql else sql[:40]
+                try:
+                    key = sql.split("idx_")[1].split(" ")[0] if "idx_" in sql else sql[:40]
+                except IndexError:
+                    key = sql[:40]
                 results[key] = await self.create_index(db_pool, sql)
         return results
 
