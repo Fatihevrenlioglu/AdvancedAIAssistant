@@ -5,6 +5,7 @@ redis==5.0.1
 pydantic==2.5.0
 pydantic-settings==2.1.0
 python-dotenv==1.0.0
+# 2.8.1 tag is unavailable on PyPI; pin to latest valid 2.8.x release.
 PyJWT==2.8.0
 passlib==1.7.4
 bcrypt==4.1.1
