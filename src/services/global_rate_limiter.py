@@ -2,7 +2,7 @@ import logging
 from datetime import datetime  # HATA 3 FIX: added datetime import
 from typing import Dict, Tuple
 
-from aioredis import Redis
+from redis.asyncio import Redis
 
 logger = logging.getLogger(__name__)
 

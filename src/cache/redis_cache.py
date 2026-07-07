@@ -3,7 +3,7 @@ import logging
 from datetime import datetime
 from typing import Any, Optional
 
-from aioredis import Redis
+from redis.asyncio import Redis
 
 logger = logging.getLogger(__name__)
 
